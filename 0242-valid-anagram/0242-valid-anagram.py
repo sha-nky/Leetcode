@@ -20,7 +20,7 @@ class Solution:
         if len(s) != len(t):
             return False
         un = set(s)
-        for char in s:
+        for char in un:
             if s.count(char) != t.count(char):
                 return False
         
