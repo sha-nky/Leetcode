@@ -21,4 +21,3 @@ class Solution:
         
         dfs(sr, sc)
         return image
-                
