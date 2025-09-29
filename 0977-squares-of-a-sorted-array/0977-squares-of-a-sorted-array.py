@@ -20,13 +20,14 @@ class Solution:
             else:
                 res.append(neg[j] ** 2)
                 j += 1
+        if i < len(pos):
+            while i < len(pos):
+                res.append(pos[i] ** 2)
+                i += 1
         
-        while i < len(pos):
-            res.append(pos[i] ** 2)
-            i += 1
-        
-        while j < len(neg):
-            res.append(neg[j] ** 2)
-            j += 1
+        if j < len(neg):
+            while j < len(neg):
+                res.append(neg[j] ** 2)
+                j += 1
         
         return res
