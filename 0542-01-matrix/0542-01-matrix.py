@@ -12,8 +12,8 @@ class Solution:
         for i in range(m-1, -1, -1):
             for j in range(n-1, -1, -1):
                 if mat[i][j] != 0:
-                    bottom = mat[i+1][j] if i < n-1 else inf
-                    right = mat[i][j+1] if j < j-1 else inf
+                    bottom = mat[i+1][j] if i < m-1 else inf
+                    right = mat[i][j+1] if j < n-1 else inf
                     mat[i][j] = min(mat[i][j], 1 + min(bottom, right))
         
         return mat
