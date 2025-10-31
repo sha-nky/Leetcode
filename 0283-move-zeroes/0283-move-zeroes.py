@@ -6,4 +6,3 @@ class Solution:
                 nums[j], nums[i] = nums[i], nums[j]
                 i += 1
         return nums
-        
