@@ -24,7 +24,7 @@ class Solution:
         stack = []
         
         for token in tokens:
-            if token not in {"+", "-", "*", "/"}:
+            if token not in "+-*/":
                 stack.append(int(token))
             else:
                 b = stack.pop()
@@ -39,4 +39,4 @@ class Solution:
                 else:
                     stack.append(int(a / b))
         
-        return stack.pop()
+        return stack[0]
