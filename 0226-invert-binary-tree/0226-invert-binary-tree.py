@@ -9,12 +9,14 @@ class Solution:
         if not root:
             return None
         
-        queue = [root]
+        queue = deque()
+        queue.append(root)
         while queue:
-            node = queue.pop(0)
-            node.left, node.right = node.right, node.left
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
+            curr = queue.popleft()
+            curr.left, curr.right = curr.right, curr.left
+            if curr.left:
+                queue.append(curr.left)
+            if curr.right:
+                queue.append(curr.right)
+        
         return root
