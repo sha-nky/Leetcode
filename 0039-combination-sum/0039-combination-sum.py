@@ -27,9 +27,10 @@ class Solution:
             if k < 0 or i == len(candidates):
                 return
             
-            subset.append(candidates[i])
-            rec(i, k-candidates[i], subset)
-            subset.pop()
+            if candidates[i] <= k:
+                subset.append(candidates[i])
+                rec(i, k-candidates[i], subset)
+                subset.pop()
             rec(i+1, k, subset)
             
         rec(0, target, [])
