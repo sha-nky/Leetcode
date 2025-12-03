@@ -8,20 +8,20 @@ class Solution:
             queue = deque()
             queue.append((r, c))
             visited[r][c] = 1
-
+            
             while queue:
                 row, col = queue.popleft()
-                for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                for dr, dc in [(-1, 0), (1, 0), (0, 1), (0, -1)]:
                     nr, nc = row+dr, col+dc
                     if 0 <= nr < rows and 0 <= nc < cols:
-                        if grid[nr][nc]=="1" and not visited[nr][nc]:
-                            visited[nr][nc] = 1
+                        if grid[nr][nc] == "1" and not visited[nr][nc]:
                             queue.append((nr, nc))
-        
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c]=="1" and not visited[r][c]:
+                            visited[nr][nc] = 1
+            
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == "1" and not visited[row][col]:
                     count += 1
-                    bfs(r, c)
+                    bfs(row, col)
         
         return count
