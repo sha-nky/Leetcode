@@ -1,16 +1,14 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-        memo = {}
+        dp = [-1] * len(nums)
 
-        def rec(i, curAmt):
-            if i > n-1:
-                return curAmt
-            if (i, curAmt) in memo:
-                return memo[(i, curAmt)]
-            take = rec(i+2, curAmt + nums[i])
-            notTake = rec(i+1, curAmt)
-            memo[(i, curAmt)] = max(take, notTake)
-            return memo[(i, curAmt)]
+        def rec(n):
+            if n<0:
+                return 0
+            if dp[n] != -1:
+                return dp[n]
+            
+            dp[n] = max(nums[n] + rec(n-2), rec(n-1))
+            return dp[n]
         
-        return rec(0, 0)
+        return rec(len(nums) - 1)
