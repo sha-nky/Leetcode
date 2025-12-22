@@ -3,18 +3,20 @@ class Solution:
         n = len(coins)
         memo = {}
 
-        def rec(i, amt):
-            if (i, amt) in memo:
-                return memo[(i, amt)]
+        def rec(amt):
             if amt == 0:
                 return 0
-            if i > n-1 or amt < 0:
+            if amt < 0:
                 return float("inf")
+            if amt in memo:
+                return memo[amt]
             
-            take = 1 + rec(i, amt - coins[i])
-            nottake = rec(i+1, amt)
-            memo[(i, amt)] = min(take, nottake)
-            return memo[(i, amt)]
+            ans = float("inf")
+            for coin in coins:
+                ans = min(ans, 1 + rec(amt - coin))
+            
+            memo[amt] = ans
+            return memo[amt]
         
-        res = rec(0, amount)
+        res = rec(amount)
         return -1 if res == float("inf") else res
