@@ -2,7 +2,7 @@ class Solution:
     def convert(self, s: str, numRows: int) -> str:
         pattern = [[] for _ in range(numRows)]
         i = 0
-        direction = -1
+        flag = -1
         
         for ch in s:
             pattern[i].append(ch)
