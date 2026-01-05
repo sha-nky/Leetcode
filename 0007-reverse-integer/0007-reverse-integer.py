@@ -7,7 +7,7 @@ class Solution:
         
         rev = int(str(x)[::-1])
 
-        if rev not in range(-2**31, 2**31):
+        if x > 2**31 - 1:
             return 0
         
         return rev * flag
