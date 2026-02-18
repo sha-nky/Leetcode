@@ -14,7 +14,7 @@ class Solution:
                 return -1
             else:
                 return 1
-        print(nums1, nums2)
+        
         if i < len(nums1):
             while i < len(nums1):
                 if int(nums1[i]) != 0:
