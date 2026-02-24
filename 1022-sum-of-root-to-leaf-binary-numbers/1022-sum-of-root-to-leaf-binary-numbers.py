@@ -10,13 +10,13 @@ class Solution:
             if not node:
                 return 0
             
-            cur += str(node.val)
+            cur = cur * 2 + node.val
             if not node.left and not node.right:
-                return int(cur, 2)
+                return cur
             
             left = dfs(node.left, cur)
             right = dfs(node.right, cur)
             
             return left + right
         
-        return dfs(root, "")
+        return dfs(root, 0)
