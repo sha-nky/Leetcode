@@ -20,4 +20,4 @@ class Solution:
                 i += 1
                 j += 1
         
-        return decodedText.strip()
+        return decodedText.rstrip()
