@@ -11,14 +11,14 @@ class Solution(object):
 
             for j in range(26):
                 for k in range(26):
-                    dp[i + 1][j][k] = 1000000
+                    dp[i + 1][j][k] = float("inf")
 
             for j in range(26):
                 for k in range(26):
                     dp[i + 1][j][t] = min(dp[i + 1][j][t], dp[i][j][k] + self.cal(k, t))
                     dp[i + 1][t][k] = min(dp[i + 1][t][k], dp[i][j][k] + self.cal(j, t))
 
-        ans = 100000
+        ans = float("inf")
         for j in range(26):
             for k in range(26):
                 ans = min(ans, dp[n][j][k])
