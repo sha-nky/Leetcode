@@ -3,24 +3,44 @@ class Solution(object):
         return abs(a // 6 - b // 6) + abs(a % 6 - b % 6)
 
     def minimumDistance(self, word):
-        n = len(word)
-        dp = [[[0] * 26 for _ in range(26)] for _ in range(n + 1)]
+        # n = len(word)
+        # dp = [[[0] * 26 for _ in range(26)] for _ in range(n + 1)]
 
-        for i in range(n):
+        # for i in range(n):
+        #     t = ord(word[i]) - ord('A')
+
+        #     for j in range(26):
+        #         for k in range(26):
+        #             dp[i + 1][j][k] = float("inf")
+
+        #     for j in range(26):
+        #         for k in range(26):
+        #             dp[i + 1][j][t] = min(dp[i + 1][j][t], dp[i][j][k] + self.cal(k, t))
+        #             dp[i + 1][t][k] = min(dp[i + 1][t][k], dp[i][j][k] + self.cal(j, t))
+
+        # ans = float("inf")
+        # for j in range(26):
+        #     for k in range(26):
+        #         ans = min(ans, dp[n][j][k])
+
+        # return ans
+
+
+        n = len(word)
+        dp = [0] * 26
+        ndp = [0] * 26
+
+        for i in range(1, n):
+            p = ord(word[i - 1]) - ord('A')
             t = ord(word[i]) - ord('A')
 
             for j in range(26):
-                for k in range(26):
-                    dp[i + 1][j][k] = float("inf")
+                ndp[j] = dp[j] + self.cal(p, t)
 
             for j in range(26):
-                for k in range(26):
-                    dp[i + 1][j][t] = min(dp[i + 1][j][t], dp[i][j][k] + self.cal(k, t))
-                    dp[i + 1][t][k] = min(dp[i + 1][t][k], dp[i][j][k] + self.cal(j, t))
+                ndp[p] = min(ndp[p], dp[j] + self.cal(j, t))
 
-        ans = float("inf")
-        for j in range(26):
-            for k in range(26):
-                ans = min(ans, dp[n][j][k])
+            dp, ndp = ndp, dp
 
-        return ans
+        return min(dp)
+
