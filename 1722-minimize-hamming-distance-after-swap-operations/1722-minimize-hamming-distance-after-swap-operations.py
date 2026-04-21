@@ -1,33 +1,47 @@
+class UnionFind:
+    def __init__(self, n):
+        self.fa = list(range(n))
+        self.rank = [0] * n
+
+    def find(self, x):
+        if self.fa[x] != x:
+            self.fa[x] = self.find(self.fa[x])
+        return self.fa[x]
+
+    def union(self, x, y):
+        x = self.find(x)
+        y = self.find(y)
+        if x == y:
+            return
+        if self.rank[x] < self.rank[y]:
+            x, y = y, x
+        self.fa[y] = x
+        if self.rank[x] == self.rank[y]:
+            self.rank[x] += 1
+
+
 class Solution:
-    def minimumHammingDistance(self, source: list[int], target: list[int], allowedSwaps: list[list[int]]) -> int:
+    def minimumHammingDistance(
+        self,
+        source: List[int],
+        target: List[int],
+        allowedSwaps: List[List[int]],
+    ) -> int:
         n = len(source)
-        parent = list(range(n))
-
-        def find(x):
-            if parent[x] != x:
-                parent[x] = find(parent[x])
-            return parent[x]
-
-        def unite(a, b):
-            parent[find(a)] = find(b)
-
+        uf = UnionFind(n)
         for a, b in allowedSwaps:
-            unite(a, b)
+            uf.union(a, b)
 
-        # Group source values by their component root
-        from collections import defaultdict, Counter
-        groups = defaultdict(list)
+        sets = defaultdict(lambda: defaultdict(int))
         for i in range(n):
-            groups[find(i)].append(source[i])
-        groups = {root: Counter(vals) for root, vals in groups.items()}
+            f = uf.find(i)
+            sets[f][source[i]] += 1
 
-        hamming_dist = 0
+        ans = 0
         for i in range(n):
-            root = find(i)
-            freq = groups[root]
-            if freq[target[i]] > 0:
-                freq[target[i]] -= 1  # matched, consume this source value
+            f = uf.find(i)
+            if sets[f][target[i]] > 0:
+                sets[f][target[i]] -= 1
             else:
-                hamming_dist += 1     # no match found in this component
-
-        return hamming_dist
+                ans += 1
+        return ans
