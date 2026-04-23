@@ -2,6 +2,19 @@ from collections import defaultdict
 
 class Solution:
     def distance(self, nums: List[int]) -> List[int]:
+        # ans = []
+        # n = len(nums)
+
+        # for i in range(n):
+        #     dist = 0
+        #     for j in range(n):
+        #         if i != j and nums[i] == nums[j]:
+        #             dist += abs(i - j)
+        #     ans.append(dist)
+        
+        # return ans
+
+
         n = len(nums)
         ans = [0] * n
 
