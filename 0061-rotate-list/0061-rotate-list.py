@@ -16,7 +16,7 @@ class Solution:
 
             return head
         
-        if not head:
+        if not head or not head.next:
             return head
         
         temp = head
