@@ -63,7 +63,7 @@ class Solution:
 
         while T < B and L < R:
             ln, wid = B - T, R - L
-            perimeter = 2 * ln + 2 * wid
+            perimeter = 2 * (ln + wid)
             r = k % perimeter
 
             while r:
