@@ -14,6 +14,6 @@ class Solution:
                 iceCreams += 1
                 coins -= coin
             else:
-                break
+                return iceCreams
         
         return iceCreams
