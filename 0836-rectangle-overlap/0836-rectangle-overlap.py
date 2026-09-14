@@ -3,6 +3,8 @@ class Solution:
         x11, y11, x12, y12 = rec1
         x21, y21, x22, y22 = rec2
 
-        if (x11 < x22 and x21 < x12) and (y11 < y22 and y21 < y12):
-            return True
-        return False
+        return (
+            (x11 < x22 and x21 < x12)
+            and
+            (y11 < y22 and y21 < y12)
+        )
