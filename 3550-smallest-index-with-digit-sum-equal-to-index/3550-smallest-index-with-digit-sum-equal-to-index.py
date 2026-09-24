@@ -1,15 +1,22 @@
 class Solution:
     def smallestIndex(self, nums: List[int]) -> int:
-        def sumOfDigits(n: int) -> int:
-            s = 0
-            while n:
-                s += n % 10
-                n //= 10
+        # def sumOfDigits(n: int) -> int:
+        #     s = 0
+        #     while n:
+        #         s += n % 10
+        #         n //= 10
             
-            return s
+        #     return s
         
-        for i in range(len(nums)):
-            if i == sumOfDigits(nums[i]):
+        # for i in range(len(nums)):
+        #     if i == sumOfDigits(nums[i]):
+        #         return i
+        
+        # return -1
+
+
+        for i in  range(len(nums)):
+            if sum(map(int, str(nums[i]))) == i:
                 return i
-        
-        return -1
+
+        return - 1
