@@ -1,7 +1,8 @@
 class Solution:
     def evaluate(self, s: str, knowledge: list[list[str]]) -> str:
         knowledge = {key: value for key, value in knowledge}
-        res = ""
+        
+        res = []
         n = len(s)
         flag = 0
 
@@ -11,12 +12,12 @@ class Solution:
                 key = ""
             elif s[i] == ")":
                 flag = 0
-                res += knowledge.get(key, "?")
+                res.append(knowledge.get(key, "?"))
                 key = ""
             else:
                 if flag:
                     key += s[i]
                 else:
-                    res += s[i]
+                    res.append(s[i])
         
-        return res
+        return "".join(res)
