@@ -1,6 +1,6 @@
 class Solution:
     def maxAlternatingSum(self, nums: List[int]) -> int:
-        nums = [num**2 for num in nums]
+        nums = [num*num for num in nums]
         nums.sort()
         
         n = len(nums)
