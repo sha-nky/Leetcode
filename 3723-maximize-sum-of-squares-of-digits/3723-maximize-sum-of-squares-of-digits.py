@@ -25,16 +25,35 @@ class Solution:
         # return n
 
 
+        # n = []
+        # possibleNines, remaining = divmod(sum, 9)
+
+        # while num:
+        #     if possibleNines:
+        #         if possibleNines == num and remaining:
+        #             return ""
+        #         elif possibleNines > num:
+        #             return ""
+
+        #         n.append("9")
+        #         possibleNines -= 1
+        #     else:
+        #         n.append(str(remaining))
+        #         remaining = 0
+
+        #     num -= 1
+        
+        # return "".join(n)
+
+
+        if sum > 9 * num:
+            return ""
+
         n = []
         possibleNines, remaining = divmod(sum, 9)
 
         while num:
             if possibleNines:
-                if possibleNines == num and remaining:
-                    return ""
-                elif possibleNines > num:
-                    return ""
-
                 n.append("9")
                 possibleNines -= 1
             else:
@@ -42,5 +61,5 @@ class Solution:
                 remaining = 0
 
             num -= 1
-        
+
         return "".join(n)
