@@ -1,25 +1,46 @@
 class Solution:
     def maxSumOfSquares(self, num: int, sum: int) -> str:
-        n = ""
+        # n = ""
+        # possibleNines, remaining = divmod(sum, 9)
+
+        # while num:
+        #     if possibleNines:
+        #         if possibleNines == num:
+        #             if remaining:
+        #                 return ""
+        #             else:
+        #                 n += str(9)
+        #                 possibleNines -= 1
+        #         elif possibleNines > num:
+        #             return ""
+        #         else:
+        #             n += str(9)
+        #             possibleNines -= 1
+        #     else:
+        #         n += str(remaining)
+        #         remaining = 0
+
+        #     num -= 1
+        
+        # return n
+
+
+        n = []
         possibleNines, remaining = divmod(sum, 9)
 
         while num:
             if possibleNines:
-                if possibleNines == num:
-                    if remaining:
-                        return ""
-                    else:
-                        n += str(9)
-                        possibleNines -= 1
+                if possibleNines == num and remaining:
+                    return ""
                 elif possibleNines > num:
                     return ""
-                else:
-                    n += str(9)
-                    possibleNines -= 1
+
+                n.append("9")
+                possibleNines -= 1
             else:
-                n += str(remaining)
+                n.append(str(remaining))
                 remaining = 0
 
             num -= 1
         
-        return n
+        return "".join(n)
