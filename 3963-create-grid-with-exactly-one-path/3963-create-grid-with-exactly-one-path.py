@@ -13,5 +13,5 @@ class Solution:
                 i += 1
                 grid[i][j] = "."
         
-        # return ["".join(row) for row in grid]
-        return list(map(lambda x:"".join(x), grid))
+        return ["".join(row) for row in grid]
+        # return list(map(lambda x:"".join(x), grid))
