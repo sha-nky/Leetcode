@@ -6,5 +6,3 @@ class Solution:
                 return not flag
             n -= rem
             flag = not flag
-        
-        return flag
